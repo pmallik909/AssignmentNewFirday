@@ -19,3 +19,11 @@ For the enhancements to run the test from command line i have a task which can b
 Further more enhancements we can add cucumber-JVM which will help in getting and html report.
 
 The framework can be split to multliple steps file( as per vechiles ), which will help us avoiding ambiguity.
+
+
+Negative Scenario
+
+- enter dates while age is not more than 18 year leads to error
+- entering dummy data in the input fields leads to error
+
+
