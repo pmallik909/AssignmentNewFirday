@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+}
+
+
+group 'test.assignment.friday'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+
+
+
+
+repositories {
+    mavenCentral()
+}
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    def test = ['--plugin', 'pretty', '--glue', 'gradle.cucumber','/Users/prabhudutta/Automation/Assignment/Assignment/src/test/resources', '/Users/prabhudutta/Automation/Assignment/Assignment/src/test/java/com/test/assignment']
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = test
+        }
+    }
+}
+
+
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'info.cukes', name: 'cucumber-java', version: '1.2.2'
+    compile group: 'info.cukes', name: 'cucumber-junit', version: '1.2.2'
+    compile group: 'info.cukes', name: 'cucumber-core', version: '1.2.2'
+    compile group: 'info.cukes', name: 'cucumber-picocontainer', version: '1.2.2'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.141.59'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-remote-driver', version: '3.141.59'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testRuntime
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+defaultTasks 'clean','run'
+
+
