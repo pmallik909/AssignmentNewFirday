@@ -26,4 +26,8 @@ Negative Scenario
 - enter dates while age is not more than 18 year leads to error
 - entering dummy data in the input fields leads to error
 
+HOW TO RUN
 
+- Execute the TestRunner file to run all the features together
+- select individual feature and click run for indivisual run
+- a gradle task is also present in build.gradle which can also execute the test cases. (This can be enhanced with multiple parameters).
