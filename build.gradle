@@ -16,14 +16,28 @@ repositories {
     mavenCentral()
 }
 
-task cucumber() {
-    dependsOn assemble, compileTestJava
-    def test = ['--plugin', 'pretty', '--glue', 'gradle.cucumber','/Users/prabhudutta/Automation/Assignment/Assignment/src/test/resources', '/Users/prabhudutta/Automation/Assignment/Assignment/src/test/java/com/test/assignment']
+//task cucumber() {
+//    dependsOn assemble, compileTestJava
+//    def test = ['--plugin', 'pretty', '--glue', 'gradle.cucumber','/Users/prabhudutta/Automation/Assignment/Assignment/src/test/resources', '/Users/prabhudutta/Automation/Assignment/Assignment/src/test/java/com/test/assignment']
+//    doLast {
+//        javaexec {
+//            main = "io.cucumber.core.cli.Main"
+//            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+//            args = test
+//        }
+//    }
+//}
+
+task cucumberDryRun() {
+    dependsOn assemble, compileTestJava, processTestResources
+    def cucumberArgs = ['--plugin', 'html:target/cucumber-html-report', '--plugin', 'json:target/cucumber.json', '-f', 'pretty', '--glue', 'com.test.assignment', 'src/test/resources',]
+    logger.quiet("Arguments are" + cucumberArgs)
     doLast {
         javaexec {
-            main = "io.cucumber.core.cli.Main"
+            jvmArgs = []
+            main = "cucumber.api.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = test
+            args = cucumberArgs
         }
     }
 }

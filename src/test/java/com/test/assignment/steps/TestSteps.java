@@ -72,19 +72,19 @@ public class TestSteps {
 
         if(vechile.equalsIgnoreCase("AUDI")){
 
-            vechilePage.chooseYouVechileTextValidation();
+
             vechilePage.clickOnAudi();
             System.out.println("clicked on car type");
         }
         else if(vechile.equalsIgnoreCase("BMW")){
 
-            vechilePage.chooseYouVechileTextValidation();
+
             vechilePage.clickOnBMW();
             System.out.println("clicked on car type as BMW");
         }
         else if(vechile.equalsIgnoreCase("AUSTIN")){
 
-            vechilePage.chooseYouVechileTextValidation();
+
             vechilePage.clickOnAustin();
             System.out.println("clicked on car type as AUSTIN");
         }
@@ -97,17 +97,17 @@ public class TestSteps {
         vechileModelPage = new VechileModelPage();
         if(vechileModel.equalsIgnoreCase("Cabriolet")){
 
-            //Thread.sleep(4000);
-            vechileModelPage.validateText();
+
+
             vechileModelPage.clickOnVechileModel();
             System.out.println("Clicked on Cabriolet");
         }
         else if(vechileModel.equalsIgnoreCase("A1")){
 
-            //Thread.sleep(3000);
+
 
             System.out.println("Selecting A1");
-            vechileModelPage.validateText();
+
             vechileModelPage.selectVechileA1Model();
             System.out.println("Clicked on A1");
         }
@@ -115,7 +115,6 @@ public class TestSteps {
 
             //Thread.sleep(3000);
             System.out.println("Selecting A4");
-            vechileModelPage.validateText();
             vechileModelPage.selectVechileA3Model();
             System.out.println("Clicked on A4");
         }

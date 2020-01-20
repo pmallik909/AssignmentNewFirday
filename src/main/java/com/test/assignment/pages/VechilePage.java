@@ -3,6 +3,7 @@ package com.test.assignment.pages;
 
 import com.test.assignment.actions.UIActions;
 import com.test.assignment.baseClass.BaseClass;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -54,7 +55,7 @@ public class VechilePage extends BaseClass {
 
         System.out.println("Validating Text");
         System.out.println(chooseYourVechile.getText());
-        uiActions.verifyText(chooseYourVechile, "Wähle dein Auto aus", "Its not the correct Text", 5);
+        Assert.assertEquals(chooseYourVechile.getText(), "W?hle dein Auto aus");
 
         return new VechilePage();
     }
