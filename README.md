@@ -3,7 +3,7 @@
 This is a sample Cucumber and JAVA, Selenium based framework for the Test Application to  Automate.
 
 Build Tool - Gradle
-COding Language - Core java,
+Coding Language - Core java,
 Tools - Selenium, Cucumber, Gherkin
 
 
