@@ -5,8 +5,6 @@ import com.test.assignment.pages.*;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.gl.E;
-import gherkin.lexer.Th;
 
 
 public class TestSteps {
@@ -33,25 +31,38 @@ public class TestSteps {
     @Then("^i click on the car is already insured section$")
     public void clickOnCarInsuredBTN() throws Exception{
 
-        selectPreconditionPage = new SelectPreconditionPage();
-        selectPreconditionPage.verifyPageTitle();
-        selectPreconditionPage.selectPreconditionAndClickOnFurther();
+        try {
+            selectPreconditionPage = new SelectPreconditionPage();
+            selectPreconditionPage.verifyPageTitle();
+            selectPreconditionPage.selectPreconditionAndClickOnFurther();
+        }
+        catch (Exception e){
+            uiActions.closeBrowser();
+        }
     }
 
     @Then("^i move to RegisteredOwnerPage and click on newWithPurchase button$")
     public void clickOnNewWithPurchaseBTN() throws Exception{
 
-        registeredOwnerPage = new RegisteredOwnerPage();
-        registeredOwnerPage.verifyPageTitlesOfRegisteredOwnerPage();
-        registeredOwnerPage.clickOnBrandNewBTN();
+        try {
+            registeredOwnerPage = new RegisteredOwnerPage();
+            registeredOwnerPage.verifyPageTitlesOfRegisteredOwnerPage();
+            registeredOwnerPage.clickOnBrandNewBTN();
+        }catch (Exception e){
+            uiActions.closeBrowser();
+        }
 
     }
 
     @Then("^i click on the further button$")
     public void clickOnFurther() throws Exception{
 
-        selectPreconditionPage = new SelectPreconditionPage();
-        selectPreconditionPage.clickOnFurtherBTN();
+        try {
+            selectPreconditionPage = new SelectPreconditionPage();
+            selectPreconditionPage.clickOnFurtherBTN();
+        }catch (Exception e){
+            uiActions.closeBrowser();
+        }
 
     }
 
@@ -68,25 +79,29 @@ public class TestSteps {
     @Then("^i select \"([^\"]*)\" vechile$")
     public void i_select_vechile(String vechile) throws Exception {
 
-        vechilePage = new VechilePage();
+        try {
 
-        if(vechile.equalsIgnoreCase("AUDI")){
+            vechilePage = new VechilePage();
+
+            if (vechile.equalsIgnoreCase("AUDI")) {
 
 
-            vechilePage.clickOnAudi();
-            System.out.println("clicked on car type");
+                vechilePage.clickOnAudi();
+                System.out.println("clicked on car type");
+            } else if (vechile.equalsIgnoreCase("BMW")) {
+
+
+                vechilePage.clickOnBMW();
+                System.out.println("clicked on car type as BMW");
+            } else if (vechile.equalsIgnoreCase("AUSTIN")) {
+
+
+                vechilePage.clickOnAustin();
+                System.out.println("clicked on car type as AUSTIN");
+            }
         }
-        else if(vechile.equalsIgnoreCase("BMW")){
-
-
-            vechilePage.clickOnBMW();
-            System.out.println("clicked on car type as BMW");
-        }
-        else if(vechile.equalsIgnoreCase("AUSTIN")){
-
-
-            vechilePage.clickOnAustin();
-            System.out.println("clicked on car type as AUSTIN");
+        catch (Exception e){
+            uiActions.closeBrowser();
         }
 
     }
@@ -94,95 +109,95 @@ public class TestSteps {
     @Then("^i select vechilemodel as \"([^\"]*)\"$")
     public void i_select_vechileModel(String  vechileModel) throws Exception {
 
-        vechileModelPage = new VechileModelPage();
-        if(vechileModel.equalsIgnoreCase("Cabriolet")){
+        try {
+
+            vechileModelPage = new VechileModelPage();
+            if (vechileModel.equalsIgnoreCase("Cabriolet")) {
 
 
-
-            vechileModelPage.clickOnVechileModel();
-            System.out.println("Clicked on Cabriolet");
-        }
-        else if(vechileModel.equalsIgnoreCase("A1")){
+                vechileModelPage.clickOnVechileModel();
+                System.out.println("Clicked on Cabriolet");
+            } else if (vechileModel.equalsIgnoreCase("A1")) {
 
 
+                System.out.println("Selecting A1");
 
-            System.out.println("Selecting A1");
+                vechileModelPage.selectVechileA1Model();
+                System.out.println("Clicked on A1");
+            } else if (vechileModel.equalsIgnoreCase("A4")) {
 
-            vechileModelPage.selectVechileA1Model();
-            System.out.println("Clicked on A1");
-        }
-        else if(vechileModel.equalsIgnoreCase("A4")){
+                //Thread.sleep(3000);
+                System.out.println("Selecting A4");
+                vechileModelPage.selectVechileA3Model();
+                System.out.println("Clicked on A4");
+            } else if (vechileModel.equalsIgnoreCase("6er")) {
 
-            //Thread.sleep(3000);
-            System.out.println("Selecting A4");
-            vechileModelPage.selectVechileA3Model();
-            System.out.println("Clicked on A4");
-        }
-        else if(vechileModel.equalsIgnoreCase("6er")){
+                //Thread.sleep(3000);
+                System.out.println("Selecting 6er");
+                vechileModelPage.validateText();
+                vechileModelPage.selectVechile6erModel();
+                System.out.println("Clicked on 6er");
+            } else if (vechileModel.equalsIgnoreCase("4er")) {
 
-            //Thread.sleep(3000);
-            System.out.println("Selecting 6er");
-            vechileModelPage.validateText();
-            vechileModelPage.selectVechile6erModel();
-            System.out.println("Clicked on 6er");
-        }
-        else if(vechileModel.equalsIgnoreCase("4er")){
+                //Thread.sleep(3000);
+                System.out.println("Selecting 4er");
+                vechileModelPage.validateText();
+                vechileModelPage.selectVechile4erModel();
+                System.out.println("Clicked on 4er");
+            } else if (vechileModel.equalsIgnoreCase("1er")) {
 
-            //Thread.sleep(3000);
-            System.out.println("Selecting 4er");
-            vechileModelPage.validateText();
-            vechileModelPage.selectVechile4erModel();
-            System.out.println("Clicked on 4er");
-        }
-        else if(vechileModel.equalsIgnoreCase("1er")){
+                //Thread.sleep(3000);
+                System.out.println("Selecting 1er");
+                vechileModelPage.validateText();
+                vechileModelPage.selectVechile1erModel();
+                System.out.println("Clicked on 1er");
+            } else if (vechileModel.equalsIgnoreCase("Estate")) {
 
-            //Thread.sleep(3000);
-            System.out.println("Selecting 1er");
-            vechileModelPage.validateText();
-            vechileModelPage.selectVechile1erModel();
-            System.out.println("Clicked on 1er");
-        }
-        else if(vechileModel.equalsIgnoreCase("Estate")){
+                //Thread.sleep(3000);
+                System.out.println("Selecting Estate");
+                vechileModelPage.validateText();
+                vechileModelPage.selectVechileEstate();
+                System.out.println("Clicked on Estate");
+            } else if (vechileModel.equalsIgnoreCase("maestro")) {
 
-            //Thread.sleep(3000);
-            System.out.println("Selecting Estate");
-            vechileModelPage.validateText();
-            vechileModelPage.selectVechileEstate();
-            System.out.println("Clicked on Estate");
-        }
-        else if(vechileModel.equalsIgnoreCase("maestro")){
+                //Thread.sleep(3000);
+                System.out.println("Selecting maestro");
+                vechileModelPage.validateText();
+                vechileModelPage.selectVechilemaestro();
+                System.out.println("Clicked on maestro");
+            } else if (vechileModel.equalsIgnoreCase("metro")) {
 
-            //Thread.sleep(3000);
-            System.out.println("Selecting maestro");
-            vechileModelPage.validateText();
-            vechileModelPage.selectVechilemaestro();
-            System.out.println("Clicked on maestro");
-        }
-        else if(vechileModel.equalsIgnoreCase("metro")){
-
-            //Thread.sleep(3000);
-            System.out.println("Selecting metro");
-            vechileModelPage.validateText();
-            vechileModelPage.selectVechilemetro();
-            System.out.println("Clicked on metro");
+                //Thread.sleep(3000);
+                System.out.println("Selecting metro");
+                vechileModelPage.validateText();
+                vechileModelPage.selectVechilemetro();
+                System.out.println("Clicked on metro");
+            }
+        }catch (Exception e){
+            uiActions.closeBrowser();
         }
     }
 
     @Then("^i select \"([^\"]*)\" as fuelType$")
     public void selectFuelType(String fuelType) throws Exception {
 
-        fuelTypePage = new FuelTypePage();
-        if (fuelType.equalsIgnoreCase("PETROL")){
+        try {
 
-            fuelTypePage.validateTextforfuelType();
-            fuelTypePage.selectPetrolFuel();
-            System.out.println("petrol Selected");
+            fuelTypePage = new FuelTypePage();
+            if (fuelType.equalsIgnoreCase("PETROL")) {
+
+                fuelTypePage.validateTextforfuelType();
+                fuelTypePage.selectPetrolFuel();
+                System.out.println("petrol Selected");
+            } else if (fuelType.equalsIgnoreCase("DISEL")) {
+
+                fuelTypePage.validateTextforfuelType();
+                fuelTypePage.selectDiselFuel();
+                System.out.println("Disel Selected");
+            }
         }
-        else if(fuelType.equalsIgnoreCase("DISEL")){
-
-            fuelTypePage.validateTextforfuelType();
-            fuelTypePage.selectDiselFuel();
-            System.out.println("Disel Selected");
+        catch (Exception e){
+            uiActions.closeBrowser();
         }
 
 
@@ -191,41 +206,40 @@ public class TestSteps {
     @Then("^i select \"([^\"]*)\" engine$")
     public void selectPowerOfEngine(String enginePower) throws Exception {
 
-        enginePowerPage = new EnginePowerPage();
-        if(enginePower.equalsIgnoreCase("85KW")){
+        try {
 
-            enginePowerPage.validateTextforEnginePower();
-            enginePowerPage.clickOn85KW();
-        }
-        else if(enginePower.equalsIgnoreCase("66KW")){
+            enginePowerPage = new EnginePowerPage();
+            if (enginePower.equalsIgnoreCase("85KW")) {
 
-            enginePowerPage.validateTextforEnginePower();
-            enginePowerPage.clickOn66KW();
-        }
-        else if(enginePower.equalsIgnoreCase("96KW")){
+                enginePowerPage.validateTextforEnginePower();
+                enginePowerPage.clickOn85KW();
+            } else if (enginePower.equalsIgnoreCase("66KW")) {
 
-            enginePowerPage.validateTextforEnginePower();
-            enginePowerPage.clickOn96KW();
-        }
-        else if(enginePower.equalsIgnoreCase("330kw")){
+                enginePowerPage.validateTextforEnginePower();
+                enginePowerPage.clickOn66KW();
+            } else if (enginePower.equalsIgnoreCase("96KW")) {
 
-            enginePowerPage.validateTextforEnginePower();
-            enginePowerPage.clickOn330KW();
-        }
-        else if(enginePower.equalsIgnoreCase("105kw")){
+                enginePowerPage.validateTextforEnginePower();
+                enginePowerPage.clickOn96KW();
+            } else if (enginePower.equalsIgnoreCase("330kw")) {
 
-            enginePowerPage.validateTextforEnginePower();
-            enginePowerPage.clickOn105KW();
-        }
-        else if(enginePower.equalsIgnoreCase("49kw")){
+                enginePowerPage.validateTextforEnginePower();
+                enginePowerPage.clickOn330KW();
+            } else if (enginePower.equalsIgnoreCase("105kw")) {
 
-            enginePowerPage.validateTextforEnginePower();
-            enginePowerPage.clickOn49KW();
-        }
-        else if(enginePower.equalsIgnoreCase("35kw")){
+                enginePowerPage.validateTextforEnginePower();
+                enginePowerPage.clickOn105KW();
+            } else if (enginePower.equalsIgnoreCase("49kw")) {
 
-            enginePowerPage.validateTextforEnginePower();
-            enginePowerPage.clickOn35KW();
+                enginePowerPage.validateTextforEnginePower();
+                enginePowerPage.clickOn49KW();
+            } else if (enginePower.equalsIgnoreCase("35kw")) {
+
+                enginePowerPage.validateTextforEnginePower();
+                enginePowerPage.clickOn35KW();
+            }
+        }catch (Exception e){
+            uiActions.closeBrowser();
         }
 
     }
@@ -233,43 +247,39 @@ public class TestSteps {
     @Then("^i click on the \"([^\"]*)\" engineType$")
     public void clickOnEngine(String engineType) throws Exception {
 
-        selectEnginePage = new SelectEnginePage();
-        if (engineType.equalsIgnoreCase("Cabriolet")) {
+        try {
 
-            selectEnginePage.selectEngine();
-        }
-        else if(engineType.equalsIgnoreCase("A1")){
+            selectEnginePage = new SelectEnginePage();
+            if (engineType.equalsIgnoreCase("Cabriolet")) {
 
-            selectEnginePage.selectEngineOfA1();
-        }
-        else if(engineType.equalsIgnoreCase("A4")){
+                selectEnginePage.selectEngine();
+            } else if (engineType.equalsIgnoreCase("A1")) {
 
-            selectEnginePage.selectEngineOfA4();
-        }
-        else if(engineType.equalsIgnoreCase("650cabri0")){
+                selectEnginePage.selectEngineOfA1();
+            } else if (engineType.equalsIgnoreCase("A4")) {
 
-            selectEnginePage.selectEngineOf6er();
-        }
-        else if(engineType.equalsIgnoreCase("418Dgran")){
+                selectEnginePage.selectEngineOfA4();
+            } else if (engineType.equalsIgnoreCase("650cabri0")) {
 
-            selectEnginePage.selectEngineOf4er();
-        }
-        else if(engineType.equalsIgnoreCase("118D")){
+                selectEnginePage.selectEngineOf6er();
+            } else if (engineType.equalsIgnoreCase("418Dgran")) {
 
-            selectEnginePage.selectEngineOfBMW1er();
-        }
-        else if(engineType.equalsIgnoreCase("MONTEGO")){
+                selectEnginePage.selectEngineOf4er();
+            } else if (engineType.equalsIgnoreCase("118D")) {
 
-            selectEnginePage.selectEngineOfAustinMontego();
-        }
-        else if(engineType.equalsIgnoreCase("MAESTRO, MG 1.3")){
+                selectEnginePage.selectEngineOfBMW1er();
+            } else if (engineType.equalsIgnoreCase("MONTEGO")) {
 
-            selectEnginePage.selectEngineOfAustinMaestro();
-        }
+                selectEnginePage.selectEngineOfAustinMontego();
+            } else if (engineType.equalsIgnoreCase("MAESTRO, MG 1.3")) {
 
-        else if(engineType.equalsIgnoreCase("METRO")){
+                selectEnginePage.selectEngineOfAustinMaestro();
+            } else if (engineType.equalsIgnoreCase("METRO")) {
 
-            selectEnginePage.selectEngineOfAustinMetro();
+                selectEnginePage.selectEngineOfAustinMetro();
+            }
+        }catch (Exception e){
+            uiActions.closeBrowser();
         }
 
     }
@@ -277,48 +287,55 @@ public class TestSteps {
     @Then("^i enter \"([^\"]*)\" registration details$")
     public void enterRegistrationDetails(String vechileType) throws Exception {
 
-        registrationDatePage = new RegistrationDatePage();
-        if(vechileType.equalsIgnoreCase("AUDI")) {
+        try {
 
-            registrationDatePage.enterDetailsforAudi();
-            System.out.println("entered");
+            registrationDatePage = new RegistrationDatePage();
+            if (vechileType.equalsIgnoreCase("AUDI")) {
+
+                registrationDatePage.enterDetailsforAudi();
+                System.out.println("entered");
+            } else if (vechileType.equalsIgnoreCase("AUSTIN")) {
+
+                registrationDatePage.enterDetailsforAustin();
+                System.out.println("entered");
+            } else if (vechileType.equalsIgnoreCase("BMW")) {
+
+                registrationDatePage.enterDetailsforBMW();
+                System.out.println("entered");
+            }
         }
-        else if(vechileType.equalsIgnoreCase("AUSTIN")) {
-
-            registrationDatePage.enterDetailsforAustin();
-            System.out.println("entered");
-        }
-        else if(vechileType.equalsIgnoreCase("BMW")) {
-
-            registrationDatePage.enterDetailsforBMW();
-            System.out.println("entered");
+        catch (Exception e){
+            uiActions.closeBrowser();
         }
     }
 
     @Then("^i enter date of Birth details for \"([^\"]*)\"$")
     public void dateOfBirth(String dobDetails) throws Exception {
 
-        dobPage = new DOBPage();
-        if (dobDetails.equalsIgnoreCase("AUDI")) {
+        try {
+
+            dobPage = new DOBPage();
+            if (dobDetails.equalsIgnoreCase("AUDI")) {
 
 
-            dobPage.enterDOBForAudi();
-            dobPage.validateText();
-            System.out.println("DOB entered");
-        }
-        else if (dobDetails.equalsIgnoreCase("AUSTIN")) {
+                dobPage.enterDOBForAudi();
+                dobPage.validateText();
+                System.out.println("DOB entered");
+            } else if (dobDetails.equalsIgnoreCase("AUSTIN")) {
 
 
-            dobPage.enterDOBForAustin();
-            dobPage.validateText();
-            System.out.println("DOB entered");
-        }
-        else if (dobDetails.equalsIgnoreCase("BMW")) {
+                dobPage.enterDOBForAustin();
+                dobPage.validateText();
+                System.out.println("DOB entered");
+            } else if (dobDetails.equalsIgnoreCase("BMW")) {
 
 
-            dobPage.enterDOBForBMW();
-            dobPage.validateText();
-            System.out.println("DOB entered");
+                dobPage.enterDOBForBMW();
+                dobPage.validateText();
+                System.out.println("DOB entered");
+            }
+        }catch (Exception e){
+            uiActions.closeBrowser();
         }
     }
 
@@ -332,19 +349,21 @@ public class TestSteps {
     @Then("^i select \"([^\"]*)\" as vechile body type$")
     public void selectVehileBodyType(String vechileBody) throws Exception {
 
-        vechileBodyTypePage = new VechileBodyTypePage();
-        if(vechileBody.equalsIgnoreCase("cabrio")) {
+        try {
 
-            vechileBodyTypePage.selectcabrio();
-        }
-        else if(vechileBody.equalsIgnoreCase("coupe")) {
+            vechileBodyTypePage = new VechileBodyTypePage();
+            if (vechileBody.equalsIgnoreCase("cabrio")) {
 
-            vechileBodyTypePage.selectCoupe();
-        }
+                vechileBodyTypePage.selectcabrio();
+            } else if (vechileBody.equalsIgnoreCase("coupe")) {
 
-        else if(vechileBody.equalsIgnoreCase("Limousine")) {
+                vechileBodyTypePage.selectCoupe();
+            } else if (vechileBody.equalsIgnoreCase("Limousine")) {
 
-            vechileBodyTypePage.selectLimousine();
+                vechileBodyTypePage.selectLimousine();
+            }
+        }catch (Exception e){
+            uiActions.closeBrowser();
         }
 
     }
